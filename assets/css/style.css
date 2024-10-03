@@ -527,7 +527,9 @@ main { overflow-x: hidden; }
 }
 
 .stats-card .card-icon img {
-  width: 70%;
+  max-width: 70%;
+  max-height: 70%;
+  object-fit: contain;
   filter: invert(1);
 }
 
