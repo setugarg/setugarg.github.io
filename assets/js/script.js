@@ -103,3 +103,30 @@ if (localStorage.getItem("theme") === "light_theme") {
   document.body.classList.remove("light_theme");
   document.body.classList.add("dark_theme");
 }
+
+
+
+/**
+ * contact form - LinkedIn message
+ */
+
+const contactForm = document.querySelector("#contact-form");
+
+contactForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const name = contactForm.querySelector("#name").value.trim();
+  const email = contactForm.querySelector("#email").value.trim();
+  const phone = contactForm.querySelector("#phone").value.trim();
+  const message = contactForm.querySelector("#message").value.trim();
+
+  const fullMessage = "Hi Setu,\n\n" + message + "\n\n— " + name + "\nEmail: " + email + "\nPhone: " + phone;
+
+  navigator.clipboard.writeText(fullMessage).then(function () {
+    window.open("https://www.linkedin.com/in/setugarg/", "_blank");
+    alert("Your message has been copied to the clipboard.\n\nLinkedIn will open in a new tab — click \"Message\" on my profile and paste your message.");
+  }).catch(function () {
+    window.open("https://www.linkedin.com/in/setugarg/", "_blank");
+    alert("LinkedIn will open in a new tab — click \"Message\" on my profile and send your message.\n\nYour message:\n" + fullMessage);
+  });
+});
