@@ -587,6 +587,94 @@ main { overflow-x: hidden; }
 
 
 /*-----------------------------------*\
+ * #EXPERIENCE
+\*-----------------------------------*/
+
+.experience { padding-block: var(--section-padding); }
+
+.experience-content { margin-bottom: 50px; }
+
+.education-content {
+  margin-top: 60px;
+  margin-bottom: 50px;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 30px;
+  margin-left: 15px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: var(--color-secondary);
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 40px;
+}
+
+.timeline-item:last-child { padding-bottom: 0; }
+
+.timeline-dot {
+  position: absolute;
+  left: -35px;
+  top: 5px;
+  width: 12px;
+  height: 12px;
+  background: var(--raw-seinna);
+  border-radius: 50%;
+  border: 2px solid var(--bg-primary);
+  z-index: 1;
+}
+
+.timeline-content {
+  background: var(--bg-secondary);
+  padding: 25px;
+  border-radius: var(--radius-12);
+  box-shadow: var(--shadow-1);
+}
+
+.timeline-title {
+  margin-bottom: 5px;
+}
+
+.timeline-company {
+  color: var(--raw-seinna);
+  font-family: var(--ff-poppins);
+  font-weight: var(--fw-700);
+  font-size: var(--fs-5);
+  margin-bottom: 5px;
+}
+
+.timeline-date {
+  color: var(--color-secondary);
+  font-size: var(--fs-6);
+  margin-bottom: 15px;
+}
+
+.timeline-details {
+  color: var(--color-secondary);
+  line-height: 1.7;
+  padding-left: 20px;
+}
+
+.timeline-details li {
+  list-style: disc;
+  margin-bottom: 8px;
+}
+
+.timeline-details li:last-child { margin-bottom: 0; }
+
+
+
+/*-----------------------------------*\
  * #SKILLS
 \*-----------------------------------*/
 
@@ -1243,6 +1331,23 @@ textarea.input-field {
 
   .about-banner { margin-bottom: 0; }
 
+
+
+
+  /**
+   * EXPERIENCE
+   */
+
+  .experience-content,
+  .education-content {
+    position: relative;
+    padding-left: 40px;
+  }
+
+  .timeline {
+    padding-left: 40px;
+    margin-left: 20px;
+  }
 
 
 
