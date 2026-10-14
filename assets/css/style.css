@@ -691,6 +691,20 @@ main { overflow-x: hidden; }
   font-size: var(--fs-6);
 }
 
+.edu-with-logo {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.edu-logo {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  border-radius: var(--radius-12);
+  flex-shrink: 0;
+}
+
 .timeline-details li:last-child { margin-bottom: 0; }
 
 
