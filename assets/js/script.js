@@ -1,12 +1,6 @@
 'use strict';
 
-/**
- * element toggle function
- */
-
 const elemToggleFunc = function (elem) { elem.classList.toggle("active"); }
-
-
 
 /**
  * header sticky & go to top
@@ -27,8 +21,6 @@ window.addEventListener("scroll", function () {
 
 });
 
-
-
 /**
  * navbar toggle
  */
@@ -43,8 +35,6 @@ navToggleBtn.addEventListener("click", function () {
   elemToggleFunc(document.body);
 
 });
-
-
 
 /**
  * skills toggle
@@ -63,8 +53,6 @@ for (let i = 0; i < toggleBtns.length; i++) {
 
   });
 }
-
-
 
 /**
  * dark & light theme toggle
@@ -90,10 +78,6 @@ themeToggleBtn.addEventListener("click", function () {
 
 });
 
-/**
- * check & apply last time selected theme from localStorage
- */
-
 if (localStorage.getItem("theme") === "light_theme") {
   themeToggleBtn.classList.add("active");
   document.body.classList.remove("dark_theme");
@@ -104,7 +88,27 @@ if (localStorage.getItem("theme") === "light_theme") {
   document.body.classList.add("dark_theme");
 }
 
+/**
+ * scroll reveal animation
+ */
 
+const revealElements = document.querySelectorAll(".reveal");
+
+const revealObserver = new IntersectionObserver(function (entries) {
+  entries.forEach(function (entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("revealed");
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.1,
+  rootMargin: "0px 0px -40px 0px"
+});
+
+revealElements.forEach(function (el) {
+  revealObserver.observe(el);
+});
 
 /**
  * contact form - LinkedIn message
