@@ -111,26 +111,36 @@ revealElements.forEach(function (el) {
 });
 
 /**
- * contact form - LinkedIn message
+ * contact form - Formspree submission
  */
 
 const contactForm = document.querySelector("#contact-form");
+const submitBtn = contactForm.querySelector("button[type='submit']");
 
 contactForm.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  const name = contactForm.querySelector("#name").value.trim();
-  const email = contactForm.querySelector("#email").value.trim();
-  const phone = contactForm.querySelector("#phone").value.trim();
-  const message = contactForm.querySelector("#message").value.trim();
+  submitBtn.textContent = "Sending...";
+  submitBtn.disabled = true;
 
-  const fullMessage = "Hi Setu,\n\n" + message + "\n\n— " + name + "\nEmail: " + email + "\nPhone: " + phone;
-
-  navigator.clipboard.writeText(fullMessage).then(function () {
-    window.open("https://www.linkedin.com/in/setugarg/", "_blank");
-    alert("Your message has been copied to the clipboard.\n\nLinkedIn will open in a new tab — click \"Message\" on my profile and paste your message.");
+  fetch(contactForm.action, {
+    method: "POST",
+    body: new FormData(contactForm),
+    headers: { "Accept": "application/json" }
+  }).then(function (response) {
+    if (response.ok) {
+      submitBtn.textContent = "Sent!";
+      contactForm.reset();
+      setTimeout(function () {
+        submitBtn.textContent = "Send";
+        submitBtn.disabled = false;
+      }, 3000);
+    } else {
+      throw new Error("Form submission failed");
+    }
   }).catch(function () {
-    window.open("https://www.linkedin.com/in/setugarg/", "_blank");
-    alert("LinkedIn will open in a new tab — click \"Message\" on my profile and send your message.\n\nYour message:\n" + fullMessage);
+    submitBtn.textContent = "Send";
+    submitBtn.disabled = false;
+    alert("Something went wrong. Please try again or reach out on LinkedIn.");
   });
 });
